@@ -30,6 +30,7 @@ circle {
     stroke: black;
     stroke-width:2;
     fill:white;
+    display: block;
 }
 circle:hover {
     stroke: red;

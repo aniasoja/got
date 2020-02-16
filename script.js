@@ -29,19 +29,33 @@ function getY(a){
 function displayConnections(id0, id1, id2, id3, id4, id5) {
     var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o"];
     var array = [];
+    var array2 = [];
     var received = [id0, id1, id2, id3, id4, id5];
     console.log(received);
-    console.log("ex"+id0);
-    console.log(document.getElementById("ex"+id0));
-    if(document.getElementById("ex"+id0)){
-        console.log("yes");
-        for(a=0; a<received.length; a++){
-            var x = received[a];
+    for(a = 0; a<received.length; a++){
+        if(isNaN(received[a])==false){
+            array2.push(received[a]);
+        }
+    }
+    console.log(array2);
+    if(document.querySelector("#t"+id0).firstChild){
+        console.log("yes",  array2.length);
+        for(a=0; a<array2.length; a++){
+            var x = document.querySelector("#t"+array2[a]).firstChild;
+            console.log(x);
             if(x.style.display === "none") {
                 x.style.display = "block";
             } else {
                 x.style.display = "none";
             }
+        }
+        array2.sort();
+        var y = document.getElementById(array2[0].toString().concat(array2[array2.length-1]));
+        console.log(y);
+        if(y.style.display === "none") {
+            y.style.display = "block";
+        } else {
+            y.style.display = "none";
         }
     } else {
         console.log("no");
@@ -60,22 +74,18 @@ function displayConnections(id0, id1, id2, id3, id4, id5) {
                 }
             }
         }
-
         for(a=0; a<array.length; a++){
                 getX(array[a]);
                 createCircle(array[a], "ex"+array[a].substring(1));
         }
-        console.log(array);
         array.sort(function(a, b){
             return a.substring(1, a.lenght) - b.substring(1, b.length);
         });
-        console.log(array);
         var x1 = getX(array[0]);
         var x2 = getX(array[array.length-1]);
-        console.log(x1, x2);
         //x1.round();
         //x2.round();
-        createLineX(x1, x2);
+        createLineX(x1, x2, array[0].substring(1), array[array.length-1].substring(1));
     }
 
     /*
@@ -103,17 +113,18 @@ function createCircle(a, b){
     myCircle.setAttributeNS("null", "stroke-width", "2");
     myCircle.setAttributeNS("null", "fill", "white");
     myCircle.setAttributeNS("null", "id", b);
+    myCircle.setAttributeNS("null", "dupa", b);
     var table = "t"+a.substring(1, a.length);
     document.getElementById(table).appendChild(myCircle);
 }
 
-function createLineX(x1, x2){
+function createLineX(x1, x2, n1, n2){
     var myLine = document.createElementNS("http://www.w3.org/2000/svg","line"); //to create a circle. for rectangle use "rectangle"
     myLine.setAttribute("x1",x1);
     myLine.setAttribute("y1",37);
     myLine.setAttribute("x2",x2);
     myLine.setAttribute("y2",37);
-    //myLine.setAttribute("null", "id", "test2");
+    myLine.setAttribute("id", n1+n2);
 
     document.getElementById("big").appendChild(myLine);
 }
