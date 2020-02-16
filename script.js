@@ -84,11 +84,11 @@ function createCircle(a){
 
 function createLineX(x1, x2){
     var myLine = document.createElementNS("http://www.w3.org/2000/svg","line"); //to create a circle. for rectangle use "rectangle"
-    myLine.setAttributeNS("x1",x1);
-    myLine.setAttributeNS("y1",100);
-    myLine.setAttributeNS("x2",x2);
-    myLine.setAttributeNS("y2",100);
-    //myLine.setAttributeNS("null", "id", "test2");
+    myLine.setAttribute("x1",x1);
+    myLine.setAttribute("y1",100);
+    myLine.setAttribute("x2",x2);
+    myLine.setAttribute("y2",100);
+    //myLine.setAttribute("null", "id", "test2");
 
     document.getElementById("big").appendChild(myLine);
 }
