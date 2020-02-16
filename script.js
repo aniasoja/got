@@ -1,4 +1,5 @@
 function vertical(){
+    console.log()
     var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o"];
     for(c=1; c<=510; c++){
         var array = [];
@@ -9,21 +10,23 @@ function vertical(){
                 array.push(alphabet[d]+c);
             }
         }
-        array.sort();
-        console.log(array);
-        var y1 = getY(array[0]);
-        var y2 = getY(array[array.length-1]);
-        //x1.round();
-        //x2.round();
-        console.log(y1, y2);
-        createLineY(y1, y2);
+        if(array.length>1){
+            var y1 = getY(array[0]);
+            var y2 = getY(array[array.length-1]);
+            var x1 = getX(array[0]);
+            //x1.round();
+            //x2.round();
+            console.log(y1, y2, x1, array[0], array[array.length-1]);
+            createLineY(y1, y2, x1, array[0], array[array.length-1]);
+        }
+
     }
 }
 function getY(a){
     var el = document.getElementById(a);
     var element = el.getBoundingClientRect();
     var y = (element.top+element.bottom)/2;
-    return y;
+    return parseInt(y);
 }
 
 function displayConnections(id0, id1, id2, id3, id4, id5) {
@@ -65,7 +68,7 @@ function getX(a){
     var el = document.getElementById(a);
     var element = el.getBoundingClientRect();
     var x = (element.left+element.right)/2;
-    return x;
+    return parseInt(x);
 }
 function createCircle(a){
     var myCircle = document.createElementNS("http://www.w3.org/2000/svg","circle"); //to create a circle. for rectangle use "rectangle"
@@ -81,25 +84,21 @@ function createCircle(a){
 
 function createLineX(x1, x2){
     var myLine = document.createElementNS("http://www.w3.org/2000/svg","line"); //to create a circle. for rectangle use "rectangle"
-    myLine.setAttributeNS("null","x1",x1);
-    myLine.setAttributeNS("null","y1",100);
-    myLine.setAttributeNS("null","x2",x2);
-    myLine.setAttributeNS("null","y2",100);
-    myLine.setAttributeNS("null", "stroke", "rgb(255, 0, 0)");
-    myLine.setAttributeNS("null", "stroke-width", "2");
-    myLine.setAttributeNS("null", "id", "test2");
+    myLine.setAttributeNS("x1",x1);
+    myLine.setAttributeNS("y1",100);
+    myLine.setAttributeNS("x2",x2);
+    myLine.setAttributeNS("y2",100);
+    //myLine.setAttributeNS("null", "id", "test2");
 
     document.getElementById("big").appendChild(myLine);
 }
-function createLineY(y1, y2){
+function createLineY(y1, y2, x1, n1, n2){
     var myLine = document.createElementNS("http://www.w3.org/2000/svg","line"); //to create a circle. for rectangle use "rectangle"
-    myLine.setAttributeNS("null","x1",100);
-    myLine.setAttributeNS("null","y1",y1);
-    myLine.setAttributeNS("null","x2",150);
-    myLine.setAttributeNS("null","y2",y2);
-    myLine.setAttributeNS("null", "stroke", "rgb(255, 0, 0)");
-    myLine.setAttributeNS("null", "stroke-width", "2");
-    //myLine.setAttributeNS("null", "id", "test2");
+    myLine.setAttribute("x1",x1);
+    myLine.setAttribute("y1",y1);
+    myLine.setAttribute("x2",x1);
+    myLine.setAttribute("y2",y2);
+    myLine.setAttribute("id", n1+n2);
 
     document.getElementById("big").appendChild(myLine);
 }
@@ -114,7 +113,7 @@ function createLineY(y1, y2){
 */
 
 function checkArray(id1){
-    var str = id1;
+    var str = id1.toString();
     var letter = str.substring(0, 1);
     var number = str.substring(1, str.lenght);
     var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o"];

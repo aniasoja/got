@@ -37,33 +37,10 @@ circle:hover {
     stroke: red;
 }
 
-#A29:hover circle ~#A29B29{
-    stroke:rgb(255,0,0);stroke-width:2;
-}
-p:hover{
-    color: blue;
-}
-h1 {
-    color: green;
-}
-h1:hover {
-    color: pink;
-}
 
 line {
     stroke:rgb(180, 180, 180);
     stroke-width:2;
-}
-#A29B29:hover {
-    stroke:rgb(255,0,0);
-}
-
-#A29:hover {
-    stroke: red;
-}
-#A29:hover ~ #A29B29 {
-    stroke:rgb(255,0,0);
-}
-p {
-    color: red;
+    width: 20px;
+    height : 20px;
 }
