@@ -5,11 +5,14 @@
     <title>Interconectiveness in game of thrones</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    
 </head>
+<canvas id="myCanvas" width="12950" height="27" ></canvas>
+<canvas id="linecanvas" width="12950" height="1000"></canvas>
 <body onload = "vertical()">
-<div id="titles">
+    <div id="titles">
     <table>
-        <tr><th><p></p></th></tr>
+        <tr><th style="height: 50px;"><p></p></th></tr>
 
         <tr><td>The direwolf</td></tr>
         <tr><td>Night's watch mission</td></tr>
@@ -539,7 +542,7 @@
             <td><svg id='t510'></svg></td>
 
         </tr>
-        <tr>
+        <tr id="numbers">
             <th>1</th>
             <th>2</th>
             <th>3</th>
@@ -14010,6 +14013,7 @@
 
     </table>
 </div>
+<script src="script2.js"></script>
 
 <div id="svg">
     <svg height="1000" width="1000" id="big">
