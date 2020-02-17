@@ -13,15 +13,18 @@ svg{
     z-index: -1;
 }
 
-#titles{
+.titles{
     position: fixed;
-    top:50px;
     background-color: white;
     z-index: 2;
 }
+#titles{
+    top: 50px;
+}
+
 #table{
     position: absolute;
-    left:320px;
+    left:340px;
 }
 circle {
     cx: 10;
